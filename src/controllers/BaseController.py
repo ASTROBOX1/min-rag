@@ -9,18 +9,8 @@ class BaseController:
         os.makedirs(self.files_dir, exist_ok=True)
 
     def generate_project_id(self) -> str:
-        existing_ids = []
-        for item in os.listdir(self.files_dir):
-            item_path = os.path.join(self.files_dir, item)
-            if os.path.isdir(item_path) and item.startswith("project_"):
-                try:
-                    num = int(item.split("_")[1])
-                    existing_ids.append(num)
-                except ValueError:
-                    pass
-        
-        next_id = max(existing_ids) + 1 if existing_ids else 1
-        return f"project_{next_id}"
+        import uuid
+        return f"project_{uuid.uuid4().hex}"
 
     def get_file_path(self, project_id: str, file_name: str) -> str:
         project_dir = os.path.join(self.files_dir, project_id)
