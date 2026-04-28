@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     FILE_ALLOWED_TYPES: list[str] = ["text/plain", "application/pdf"]
     FILE_MAX_SIZE_MB: int = 10
     FILE_DEFAULT_CHUNK_SIZE: int = 512000
+    MONGODB_URI: str = "mongodb://localhost:27011"
+    MONGODB_DB_NAME: str = "mini-rag"
 
     BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     
